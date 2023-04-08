@@ -22,5 +22,13 @@ public class PacienteDto {
         this.apellido = apellido;
         this.dni = dni;
         this.domicilio = domicilio;
+        this.fechaAlta = LocalDate.now();
+    }
+    public PacienteDto(String nombre, String apellido, Integer dni, DomicilioDto domicilio, LocalDate fechaAlta) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.domicilio = domicilio;
+        this.fechaAlta = fechaAlta;
     }
 }

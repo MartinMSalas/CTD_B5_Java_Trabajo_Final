@@ -40,6 +40,9 @@ public class OdontologoController {
     public ResponseEntity<OdontologoDto> borrarOdontologo(@PathVariable Integer id) {
         if (id == null || id < 0)
             return ResponseEntity.badRequest().build();
+        if (odontologoService.findById(id) == null){
+            return ResponseEntity.notFound().build();
+        }
         odontologoService.delete(id);
         return ResponseEntity.ok().build();
     }

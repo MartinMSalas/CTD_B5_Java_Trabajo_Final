@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -27,6 +28,7 @@ public class PacienteServiceTest {
 
     private PacienteDto cargarPacienteSet() {
         //DomicilioDto domicilioDto = new DomicilioDto("siempreViva",1234);
+        // System.out.println(LocalDate.now());  ---> 2023-04-08
         DomicilioDto domicilioDto = new DomicilioDto("siempreViva",1234);
         PacienteDto pacienteDtoExpected = new PacienteDto("Santiago", "Paz", 3455647,domicilioDto);
         return this.pacienteService.crearPaciente(pacienteDtoExpected);

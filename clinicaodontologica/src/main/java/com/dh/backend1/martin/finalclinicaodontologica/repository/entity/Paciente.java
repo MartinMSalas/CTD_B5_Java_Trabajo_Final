@@ -30,11 +30,13 @@ public class Paciente {
     @JoinColumn(name = "domicilio_id", referencedColumnName = "id")
     private Domicilio domicilio;
 
+    /*
     public Paciente(String nombre, String apellido, Integer dni, LocalDate fechaAlta) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaAlta = fechaAlta;
     }
+    */
 
 }
