@@ -32,7 +32,7 @@ public class OdontologoServiceTest {
         OdontologoDto odontologoDtoExpected = new OdontologoDto("Santiago", "Paz", 3455647,domicilioDto);
         OdontologoDto odontologoDtoObtained  = this.odontologoService.crearOdontologo(odontologoDtoExpected);
         //this.odontologoService.crearOdontologo(new OdontologoDto("Santiago", "Paz", 3455647,domicilioDto));
-        return odontologoDtoExpected;
+        return odontologoDtoObtained;
     }
 
     @Test
@@ -56,5 +56,37 @@ public class OdontologoServiceTest {
         // Then
         Assert.assertTrue(odontologoDtoListObtained.size() > 0);
 
+    }
+
+    @Test
+    public void testFindById(){
+        // Given
+        OdontologoDto odontologoDtoExpected = this.cargarOdontoloSet();
+
+        // When
+        OdontologoDto odontologoDtoObtained = this.odontologoService.findById(odontologoDtoExpected.getId());
+        // Then
+        Assert.assertEquals(odontologoDtoObtained.getId(), odontologoDtoExpected.getId());
+
+    }
+    @Test
+    public void testUpdate(){
+        // Given
+        OdontologoDto odontologoDtoExpected = this.cargarOdontoloSet();
+        odontologoDtoExpected.setMatricula(123456);
+        // When
+        OdontologoDto odontologoDtoObtained = this.odontologoService.update(odontologoDtoExpected);
+        // Then
+        Assert.assertEquals(odontologoDtoObtained.getMatricula(), odontologoDtoExpected.getMatricula());
+    }
+
+    @Test
+    public void testDelete(){
+        // Given
+        OdontologoDto odontologoDtoExpected = this.cargarOdontoloSet();
+        // When
+        this.odontologoService.delete(odontologoDtoExpected.getId());
+        // Then
+        Assert.assertNull(this.odontologoService.findById(odontologoDtoExpected.getId()));
     }
 }

@@ -37,4 +37,29 @@ public class OdontologoService {
         odontologoRepository.findAll().forEach(odontologo -> odontologoDtoList.add(modelMapper.map(odontologo, OdontologoDto.class)));
         return odontologoDtoList;
     }
+
+    public OdontologoDto findById(Integer id) {
+        Optional<Odontologo> odontologo = odontologoRepository.findById(id);
+        return odontologo.map(value -> modelMapper.map(value, OdontologoDto.class)).orElse(null);
+
+    }
+
+    public OdontologoDto update(OdontologoDto odontologoDtoExpected) {
+        OdontologoDto odontologoDto = findById(odontologoDtoExpected.getId());
+        if (odontologoDto != null) {
+            int domicilioId = odontologoDto.getDomicilio().getId();
+            odontologoDto.setNombre(odontologoDtoExpected.getNombre());
+            odontologoDto.setApellido(odontologoDtoExpected.getApellido());
+            odontologoDto.setMatricula(odontologoDtoExpected.getMatricula());
+            odontologoDto.setDomicilio(odontologoDtoExpected.getDomicilio());
+            odontologoDto.getDomicilio().setId(domicilioId);
+            odontologoRepository.save(modelMapper.map(odontologoDto, Odontologo.class));
+            return odontologoDto;
+        }
+        return null;
+    }
+
+    public void delete(Integer id) {
+        odontologoRepository.deleteById(id);
+    }
 }
