@@ -1,5 +1,6 @@
 package com.dh.backend1.martin.finalclinicaodontologica.modeldto;
 
+import com.dh.backend1.martin.finalclinicaodontologica.repository.entity.Domicilio;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

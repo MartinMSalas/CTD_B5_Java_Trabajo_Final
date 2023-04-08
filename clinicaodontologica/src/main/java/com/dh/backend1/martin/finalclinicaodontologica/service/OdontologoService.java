@@ -25,10 +25,8 @@ public class OdontologoService {
     }
 
     public OdontologoDto crearOdontologo(OdontologoDto odontologoDto) {
-        OdontologoDto odontologoDto1;
-
-        odontologoDto1 = modelMapper.map(odontologoRepository.save(modelMapper.map(odontologoDto, Odontologo.class)), OdontologoDto.class);
-        return odontologoDto1;
+        Odontologo odontologo = odontologoRepository.save(modelMapper.map(odontologoDto, Odontologo.class));
+        return modelMapper.map(odontologo, OdontologoDto.class);
 
     }
 

@@ -30,9 +30,8 @@ public class OdontologoServiceTest {
         //DomicilioDto domicilioDto = new DomicilioDto("siempreViva",1234);
         DomicilioDto domicilioDto = new DomicilioDto("siempreViva",1234);
         OdontologoDto odontologoDtoExpected = new OdontologoDto("Santiago", "Paz", 3455647,domicilioDto);
-        OdontologoDto odontologoDtoObtained  = this.odontologoService.crearOdontologo(odontologoDtoExpected);
         //this.odontologoService.crearOdontologo(new OdontologoDto("Santiago", "Paz", 3455647,domicilioDto));
-        return odontologoDtoObtained;
+        return this.odontologoService.crearOdontologo(odontologoDtoExpected);
     }
 
     @Test
