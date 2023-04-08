@@ -3,27 +3,23 @@ package com.dh.backend1.martin.finalclinicaodontologica.modeldto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
-public class OdontologoDto {
+public class PacienteDto {
     private Integer id;
     private String nombre;
     private String apellido;
-    private Integer matricula;
+    private Integer dni;
     private DomicilioDto domicilio;
 
-    /*
-    public OdontologoDto(Integer matricula, DomicilioDto domicilio) {
-        this.matricula = matricula;
-        this.domicilio = domicilio;
-    }
+    private LocalDate fechaAlta;
 
-     */
-
-    public OdontologoDto(String nombre, String apellido, Integer matricula, DomicilioDto domicilio) {
+    public PacienteDto(String nombre, String apellido, Integer dni, DomicilioDto domicilio) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.matricula = matricula;
+        this.dni = dni;
         this.domicilio = domicilio;
     }
 }
