@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpResponse;
 import java.time.LocalDate;
 
 @RestController
@@ -32,7 +31,7 @@ public class PacienteController {
 
     }
 
-    @PostMapping("/actualizar")
+    @PutMapping("/actualizar")
     public ResponseEntity<PacienteDto> actualizarPaciente(@RequestBody PacienteDto pacienteDto) {
 
         if( pacienteDto.getId() == null)

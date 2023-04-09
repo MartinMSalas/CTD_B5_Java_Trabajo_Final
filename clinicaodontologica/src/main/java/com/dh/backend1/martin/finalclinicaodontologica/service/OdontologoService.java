@@ -45,12 +45,11 @@ public class OdontologoService {
     public OdontologoDto update(OdontologoDto odontologoDtoExpected) {
         OdontologoDto odontologoDto = findById(odontologoDtoExpected.getId());
         if (odontologoDto != null) {
-            int domicilioId = odontologoDto.getDomicilio().getId();
+
             odontologoDto.setNombre(odontologoDtoExpected.getNombre());
             odontologoDto.setApellido(odontologoDtoExpected.getApellido());
             odontologoDto.setMatricula(odontologoDtoExpected.getMatricula());
-            odontologoDto.setDomicilio(odontologoDtoExpected.getDomicilio());
-            odontologoDto.getDomicilio().setId(domicilioId);
+
             odontologoRepository.save(modelMapper.map(odontologoDto, Odontologo.class));
             return odontologoDto;
         }

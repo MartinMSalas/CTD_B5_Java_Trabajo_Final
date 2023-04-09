@@ -1,11 +1,16 @@
 package com.dh.backend1.martin.finalclinicaodontologica.repository.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+import java.util.Set;
+
 @Entity
-@Table
+@Table(name="Odontologos")
 @Data
 @NoArgsConstructor
 public class Odontologo {
@@ -17,16 +22,12 @@ public class Odontologo {
     private String apellido;
     private Integer matricula;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "domicilio_id", referencedColumnName = "id")
-    private Domicilio domicilio;
 
 
-    /*
-    public Odontologo(String nombre, String apellido, Integer matricula) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.matricula = matricula;
-    }
-    */
+    @OneToMany(mappedBy = "odontologo")
+    @JsonIgnore
+    private Set<Turno> turnos;
+
+
+
 }

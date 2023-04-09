@@ -19,7 +19,7 @@ public class OdontologoController {
             return ResponseEntity.badRequest().build();
         return ResponseEntity.ok(odontologoService.crearOdontologo(odontologoDto));
     }
-    @PostMapping("/actualizar")
+    @PutMapping("/actualizar")
     public ResponseEntity<OdontologoDto> actualizarOdontologo(@RequestBody OdontologoDto odontologoDto) {
         System.out.println(odontologoDto.getId());
         if (odontologoDto.getId() == null)

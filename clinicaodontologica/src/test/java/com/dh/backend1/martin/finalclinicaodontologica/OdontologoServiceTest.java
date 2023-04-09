@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -29,7 +29,7 @@ public class OdontologoServiceTest {
     private OdontologoDto cargarOdontoloSet() {
         //DomicilioDto domicilioDto = new DomicilioDto("siempreViva",1234);
         DomicilioDto domicilioDto = new DomicilioDto("siempreViva",1234);
-        OdontologoDto odontologoDtoExpected = new OdontologoDto("Santiago", "Paz", 3455647,domicilioDto);
+        OdontologoDto odontologoDtoExpected = new OdontologoDto("Santiago", "Paz", 3455647);
         //this.odontologoService.crearOdontologo(new OdontologoDto("Santiago", "Paz", 3455647,domicilioDto));
         return this.odontologoService.crearOdontologo(odontologoDtoExpected);
     }
