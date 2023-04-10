@@ -3,7 +3,6 @@ package com.dh.backend1.martin.finalclinicaodontologica;
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.DomicilioDto;
 
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
-import com.dh.backend1.martin.finalclinicaodontologica.service.PacienteService;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;

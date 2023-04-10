@@ -1,64 +1,62 @@
 package com.dh.backend1.martin.finalclinicaodontologica.service;
 
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
+import com.dh.backend1.martin.finalclinicaodontologica.repository.IPacienteRepository;
 import com.dh.backend1.martin.finalclinicaodontologica.repository.entity.Paciente;
-import com.dh.backend1.martin.finalclinicaodontologica.repository.impl.PacienteRepository;
-import org.modelmapper.ModelMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
-public class PacienteService {
+public class PacienteService implements IPacienteService{
 
     @Autowired
-    private ModelMapper modelMapper;
-
-    private final PacienteRepository pacienteRepository;
+    private IPacienteRepository pacienteRepository;
 
     @Autowired
-    public PacienteService(PacienteRepository pacienteRepository) {
-        this.pacienteRepository = pacienteRepository;
-    }
+    ObjectMapper mapper;
 
 
-    public PacienteDto crearPaciente(PacienteDto pacienteDtoExpected) {
-       Paciente paciente = this.pacienteRepository.save(this.modelMapper.map(pacienteDtoExpected, Paciente.class));
-       return this.modelMapper.map(paciente, PacienteDto.class);
+    @Override
+    public void save(PacienteDto pacienteDto) {
+        savePaciente(pacienteDto);
 
     }
 
-    public List<PacienteDto> findAll() {
-        List<PacienteDto> pacienteDtoList = new ArrayList<>();
-        this.pacienteRepository.findAll().forEach(paciente -> pacienteDtoList.add(this.modelMapper.map(paciente, PacienteDto.class)));
-        return pacienteDtoList;
-
-    }
-
+    @Override
     public PacienteDto findById(Integer id) {
-        Optional<Paciente> paciente = this.pacienteRepository.findById(id);
-        return paciente.map(value -> this.modelMapper.map(value, PacienteDto.class)).orElse(null);
+        Optional<Paciente> paciente = pacienteRepository.findById(id);
+        PacienteDto pacienteDto = null;
+
+        if(paciente.isPresent())
+            pacienteDto = mapper.convertValue(paciente, PacienteDto.class);
+        return pacienteDto;
     }
 
-    public PacienteDto update(PacienteDto pacienteDtoExpected) {
-        PacienteDto pacienteDto = this.findById(pacienteDtoExpected.getId());
-        if (pacienteDto != null) {
-            int idDomicilio = pacienteDto.getDomicilio().getId();
-            pacienteDto.setNombre(pacienteDtoExpected.getNombre());
-            pacienteDto.setApellido(pacienteDtoExpected.getApellido());
-            pacienteDto.setDni(pacienteDtoExpected.getDni());
-            pacienteDto.setDomicilio(pacienteDtoExpected.getDomicilio());
-            pacienteDto.getDomicilio().setId(idDomicilio);
-            this.pacienteRepository.save(modelMapper.map(pacienteDto,Paciente.class));
-            return this.modelMapper.map(pacienteDto, PacienteDto.class);
-        }
-        return null;
+    @Override
+    public void deleteById(Integer id) {
+        pacienteRepository.deleteById(id);
+    }
+    private void savePaciente(PacienteDto pacienteDto) {
+        Paciente newPaciente = mapper.convertValue(pacienteDto, Paciente.class);
+        pacienteRepository.save(newPaciente);
+    }
+    @Override
+    public void update(PacienteDto pacienteDto) {
+        savePaciente(pacienteDto);
     }
 
-    public void delete(Integer id) {
-        this.pacienteRepository.deleteById(id);
+    @Override
+    public Set<PacienteDto> findAll() {
+        List<Paciente> pacienteList = pacienteRepository.findAll();
+        Set<PacienteDto> pacienteDtoSet = new HashSet<>();
+        for(Paciente paciente: pacienteList)
+            pacienteDtoSet.add(mapper.convertValue(paciente, PacienteDto.class));
+        return pacienteDtoSet;
     }
 }

@@ -6,7 +6,6 @@ import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
 
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.TurnoDto;
 import com.dh.backend1.martin.finalclinicaodontologica.service.OdontologoService;
-import com.dh.backend1.martin.finalclinicaodontologica.service.PacienteService;
 import com.dh.backend1.martin.finalclinicaodontologica.service.TurnoService;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;

@@ -18,11 +18,11 @@ public class Turno {
     private Integer id;
 
     @ManyToOne()
-    @JoinColumn(name = "odontologo_id", referencedColumnName = "id")
+    @JoinColumn(name = "odontologo_id", nullable = false)
     private Odontologo odontologo;
 
     @ManyToOne()
-    @JoinColumn(name = "paciente_id")
+    @JoinColumn(name = "paciente_id", nullable = false)
     private Paciente paciente;
 
     private LocalDateTime fecha;
