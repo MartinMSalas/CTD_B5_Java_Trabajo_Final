@@ -7,12 +7,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
-public class OdontologoService {
+public class OdontologoService implements IOdontologoService{
 
     @Autowired
     private ModelMapper modelMapper;
@@ -30,16 +28,29 @@ public class OdontologoService {
 
     }
 
-    public List<OdontologoDto> findAll() {
-        List<OdontologoDto> odontologoDtoList = new ArrayList<>();
+    public Set<OdontologoDto> findAll() {
+        Set<OdontologoDto> odontologoDtoList = new HashSet<>();
+
         odontologoRepository.findAll().forEach(odontologo -> odontologoDtoList.add(modelMapper.map(odontologo, OdontologoDto.class)));
         return odontologoDtoList;
+    }
+
+
+    @Override
+    public OdontologoDto save(OdontologoDto odontologoDto) {
+        Odontologo odontologo = odontologoRepository.save(modelMapper.map(odontologoDto, Odontologo.class));
+        return modelMapper.map(odontologo, OdontologoDto.class);
     }
 
     public OdontologoDto findById(Integer id) {
         Optional<Odontologo> odontologo = odontologoRepository.findById(id);
         return odontologo.map(value -> modelMapper.map(value, OdontologoDto.class)).orElse(null);
 
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        odontologoRepository.deleteById(id);
     }
 
     public OdontologoDto update(OdontologoDto odontologoDtoExpected) {
@@ -56,7 +67,4 @@ public class OdontologoService {
         return null;
     }
 
-    public void delete(Integer id) {
-        odontologoRepository.deleteById(id);
-    }
 }
