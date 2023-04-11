@@ -18,7 +18,7 @@ public class PacienteDto {
 
     private LocalDate fechaAlta;
 
-    //private List<TurnoDto> turnos;
+    //
 
     public PacienteDto(String nombre, String apellido, Integer dni, DomicilioDto domicilio) {
         this.nombre = nombre;
@@ -37,41 +37,5 @@ public class PacienteDto {
     }
      */
 
-    @Override
-    public String toString() {
-        return "PacienteDto{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", dni=" + dni +
-                ", domicilio=" + domicilio +
-                ", fechaAlta=" + fechaAlta +
-                '}';
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        PacienteDto that = (PacienteDto) o;
-
-        if (!Objects.equals(id, that.id)) return false;
-        if (!Objects.equals(nombre, that.nombre)) return false;
-        if (!Objects.equals(apellido, that.apellido)) return false;
-        if (!Objects.equals(dni, that.dni)) return false;
-        if (!Objects.equals(domicilio, that.domicilio)) return false;
-        return Objects.equals(fechaAlta, that.fechaAlta);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        result = 31 * result + (apellido != null ? apellido.hashCode() : 0);
-        result = 31 * result + (dni != null ? dni.hashCode() : 0);
-        result = 31 * result + (domicilio != null ? domicilio.hashCode() : 0);
-        result = 31 * result + (fechaAlta != null ? fechaAlta.hashCode() : 0);
-        return result;
-    }
 }

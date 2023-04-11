@@ -22,12 +22,6 @@ public class Paciente {
     private String apellido;
     private Integer dni;
     private LocalDate fechaAlta;
-    /*
-    private Integer telefono;
-    private String email;
-    private String obraSocial;
-    private Integer numeroAfiliado;
-    */
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "domicilio_id", referencedColumnName = "id")
@@ -37,13 +31,7 @@ public class Paciente {
     @JsonIgnore
     private Set<Turno> turnos;
 
-    /*
-    public Paciente(String nombre, String apellido, Integer dni, LocalDate fechaAlta) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.fechaAlta = fechaAlta;
-    }
-    */
+
+
 
 }

@@ -1,6 +1,8 @@
 package com.dh.backend1.martin.finalclinicaodontologica.service;
 
+import com.dh.backend1.martin.finalclinicaodontologica.modeldto.OdontologoDto;
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
+import com.dh.backend1.martin.finalclinicaodontologica.repository.entity.Odontologo;
 import com.dh.backend1.martin.finalclinicaodontologica.repository.interf.IPacienteRepository;
 import com.dh.backend1.martin.finalclinicaodontologica.repository.entity.Paciente;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,29 +29,23 @@ public class PacienteService implements IPacienteService{
         return savePaciente(pacienteDto);
 
     }
-
+    @Override
+    public PacienteDto update(PacienteDto pacienteDto) {
+        return savePaciente(pacienteDto);
+    }
+    private PacienteDto savePaciente(PacienteDto pacienteDto) {
+        Paciente paciente = pacienteRepository.save(mapper.convertValue(pacienteDto, Paciente.class));
+        return mapper.convertValue(paciente, PacienteDto.class);
+    }
     @Override
     public PacienteDto findById(Integer id) {
         Optional<Paciente> paciente = pacienteRepository.findById(id);
-        PacienteDto pacienteDto = null;
-
-        if(paciente.isPresent())
-            pacienteDto = mapper.convertValue(paciente, PacienteDto.class);
-        return pacienteDto;
+        return paciente.map(value -> mapper.convertValue(value, PacienteDto.class)).orElse(null);
     }
 
     @Override
     public void deleteById(Integer id) {
         pacienteRepository.deleteById(id);
-    }
-    private PacienteDto savePaciente(PacienteDto pacienteDto) {
-
-        Paciente paciente = pacienteRepository.save(mapper.convertValue(pacienteDto, Paciente.class));
-        return mapper.convertValue(paciente, PacienteDto.class);
-    }
-    @Override
-    public PacienteDto update(PacienteDto pacienteDto) {
-        return savePaciente(pacienteDto);
     }
 
     @Override

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/turnos")
@@ -46,13 +47,17 @@ public class TurnoController {
 
     }
     @GetMapping("/listar")
-    public ResponseEntity<Iterable<TurnoDto>> listarTurno() {
+    public ResponseEntity<Collection<TurnoDto>> listarTurno() {
         return ResponseEntity.ok(turnoService.findAll());
     }
     @GetMapping("/buscar/{id}")
     public ResponseEntity<TurnoDto> buscarTurno(@PathVariable Integer id) {
         if (id == null || id < 0)
             return ResponseEntity.badRequest().build();
+        TurnoDto turnoDto = turnoService.findById(id);
+        if (turnoDto == null){
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(turnoService.findById(id));
     }
     @DeleteMapping("/borrar/{id}")
@@ -63,7 +68,7 @@ public class TurnoController {
         if (turnoService.findById(id) == null){
             return ResponseEntity.notFound().build();
         }
-        turnoService.delete(id);
+        turnoService.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
