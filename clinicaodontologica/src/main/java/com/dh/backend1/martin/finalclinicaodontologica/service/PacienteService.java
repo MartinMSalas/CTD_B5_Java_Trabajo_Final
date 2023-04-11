@@ -1,7 +1,7 @@
 package com.dh.backend1.martin.finalclinicaodontologica.service;
 
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
-import com.dh.backend1.martin.finalclinicaodontologica.repository.IPacienteRepository;
+import com.dh.backend1.martin.finalclinicaodontologica.repository.interf.IPacienteRepository;
 import com.dh.backend1.martin.finalclinicaodontologica.repository.entity.Paciente;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +23,8 @@ public class PacienteService implements IPacienteService{
 
 
     @Override
-    public void save(PacienteDto pacienteDto) {
-        savePaciente(pacienteDto);
+    public PacienteDto save(PacienteDto pacienteDto) {
+        return savePaciente(pacienteDto);
 
     }
 
@@ -42,13 +42,14 @@ public class PacienteService implements IPacienteService{
     public void deleteById(Integer id) {
         pacienteRepository.deleteById(id);
     }
-    private void savePaciente(PacienteDto pacienteDto) {
-        Paciente newPaciente = mapper.convertValue(pacienteDto, Paciente.class);
-        pacienteRepository.save(newPaciente);
+    private PacienteDto savePaciente(PacienteDto pacienteDto) {
+
+        Paciente paciente = pacienteRepository.save(mapper.convertValue(pacienteDto, Paciente.class));
+        return mapper.convertValue(paciente, PacienteDto.class);
     }
     @Override
-    public void update(PacienteDto pacienteDto) {
-        savePaciente(pacienteDto);
+    public PacienteDto update(PacienteDto pacienteDto) {
+        return savePaciente(pacienteDto);
     }
 
     @Override

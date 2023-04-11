@@ -32,7 +32,7 @@ public class TurnoController {
         if (turnoDto.getPaciente().getFechaAlta() == null){
             turnoDto.getPaciente().setFechaAlta(LocalDate.now());
         }
-        return ResponseEntity.ok(turnoService.crearTurno(turnoDto));
+        return ResponseEntity.ok(turnoService.save(turnoDto));
 
     }
 

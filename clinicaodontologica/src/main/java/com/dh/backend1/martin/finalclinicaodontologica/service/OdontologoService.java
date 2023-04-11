@@ -1,8 +1,8 @@
 package com.dh.backend1.martin.finalclinicaodontologica.service;
 
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.OdontologoDto;
+import com.dh.backend1.martin.finalclinicaodontologica.repository.interf.IOdontologoRepository;
 import com.dh.backend1.martin.finalclinicaodontologica.repository.entity.Odontologo;
-import com.dh.backend1.martin.finalclinicaodontologica.repository.impl.OdontologoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,18 +15,18 @@ public class OdontologoService implements IOdontologoService{
     @Autowired
     private ModelMapper modelMapper;
     
-    private final OdontologoRepository odontologoRepository;
+    private final IOdontologoRepository odontologoRepository;
 
     @Autowired
-    public OdontologoService(OdontologoRepository odontologoRepository) {
+    public OdontologoService(IOdontologoRepository odontologoRepository) {
         this.odontologoRepository = odontologoRepository;
     }
-
+    /*
     public OdontologoDto crearOdontologo(OdontologoDto odontologoDto) {
         Odontologo odontologo = odontologoRepository.save(modelMapper.map(odontologoDto, Odontologo.class));
         return modelMapper.map(odontologo, OdontologoDto.class);
-
     }
+     */
 
     public Set<OdontologoDto> findAll() {
         Set<OdontologoDto> odontologoDtoList = new HashSet<>();
@@ -44,6 +44,7 @@ public class OdontologoService implements IOdontologoService{
 
     public OdontologoDto findById(Integer id) {
         Optional<Odontologo> odontologo = odontologoRepository.findById(id);
+
         return odontologo.map(value -> modelMapper.map(value, OdontologoDto.class)).orElse(null);
 
     }
