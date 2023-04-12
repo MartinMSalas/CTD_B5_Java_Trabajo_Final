@@ -1,0 +1,2 @@
+[2023-04-1201:40:12] [ ERROR] [GlobalExceptionHandler:18] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "t"
+[2023-04-1201:41:52] [ ERROR] [GlobalExceptionHandler:18] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "t"
