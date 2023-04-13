@@ -3,9 +3,8 @@ package com.dh.backend1.martin.finalclinicaodontologica.controller;
 
 import com.dh.backend1.martin.finalclinicaodontologica.exceptions.PacienteSinDomicilioException;
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
-import com.dh.backend1.martin.finalclinicaodontologica.service.PacienteService;
+import com.dh.backend1.martin.finalclinicaodontologica.service.impl.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

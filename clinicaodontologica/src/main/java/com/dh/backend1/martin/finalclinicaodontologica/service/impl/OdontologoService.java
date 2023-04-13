@@ -1,8 +1,9 @@
-package com.dh.backend1.martin.finalclinicaodontologica.service;
+package com.dh.backend1.martin.finalclinicaodontologica.service.impl;
 
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.OdontologoDto;
 import com.dh.backend1.martin.finalclinicaodontologica.repository.interf.IOdontologoRepository;
 import com.dh.backend1.martin.finalclinicaodontologica.repository.entity.Odontologo;
+import com.dh.backend1.martin.finalclinicaodontologica.service.interf.IOdontologoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class OdontologoService implements IOdontologoService{
+public class OdontologoService implements IOdontologoService {
 
     @Autowired
     private ModelMapper modelMapper;

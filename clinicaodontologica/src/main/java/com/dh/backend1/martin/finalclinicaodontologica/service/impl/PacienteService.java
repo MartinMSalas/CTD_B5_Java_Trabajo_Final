@@ -1,10 +1,9 @@
-package com.dh.backend1.martin.finalclinicaodontologica.service;
+package com.dh.backend1.martin.finalclinicaodontologica.service.impl;
 
-import com.dh.backend1.martin.finalclinicaodontologica.modeldto.OdontologoDto;
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
-import com.dh.backend1.martin.finalclinicaodontologica.repository.entity.Odontologo;
 import com.dh.backend1.martin.finalclinicaodontologica.repository.interf.IPacienteRepository;
 import com.dh.backend1.martin.finalclinicaodontologica.repository.entity.Paciente;
+import com.dh.backend1.martin.finalclinicaodontologica.service.interf.IPacienteService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class PacienteService implements IPacienteService{
+public class PacienteService implements IPacienteService {
 
     @Autowired
     private IPacienteRepository pacienteRepository;

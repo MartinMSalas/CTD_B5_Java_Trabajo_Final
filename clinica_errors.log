@@ -22,3 +22,7 @@ insert into turnos (fecha,odontologo_id,paciente_id,id) values (?,?,?,default) [
 [2023-04-1223:35:42] [ ERROR] [GlobalExceptionHandler:39] La fecha del turno no puede ser anterior a la fecha actual
 [2023-04-1223:37:14] [ ERROR] [GlobalExceptionHandler:39] La fecha del turno no puede ser anterior a la fecha actual
 [2023-04-1223:37:36] [ ERROR] [GlobalExceptionHandler:39] La fecha del turno no puede ser anterior a la fecha actual
+[2023-04-1223:48:27] [ ERROR] [GlobalExceptionHandler:21] could not execute statement [Violación de una restricción de Integridad Referencial: "FKQTJ6T7MULC2JMFKV92X4CTKWH: PUBLIC.TURNOS FOREIGN KEY(ODONTOLOGO_ID) REFERENCES PUBLIC.ODONTOLOGOS(ID) (1)"
+Referential integrity constraint violation: "FKQTJ6T7MULC2JMFKV92X4CTKWH: PUBLIC.TURNOS FOREIGN KEY(ODONTOLOGO_ID) REFERENCES PUBLIC.ODONTOLOGOS(ID) (1)"; SQL statement:
+insert into turnos (fecha,odontologo_id,paciente_id,id) values (?,?,?,default) [23506-214]] [insert into turnos (fecha,odontologo_id,paciente_id,id) values (?,?,?,default)]; SQL [insert into turnos (fecha,odontologo_id,paciente_id,id) values (?,?,?,default)]; constraint [FKQTJ6T7MULC2JMFKV92X4CTKWH]
+[2023-04-1223:52:44] [ ERROR] [GlobalExceptionHandler:33] El id del turno debe ser nulo

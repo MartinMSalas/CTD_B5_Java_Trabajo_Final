@@ -1,6 +1,7 @@
 package com.dh.backend1.martin.finalclinicaodontologica.service;
 
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.OdontologoDto;
+import com.dh.backend1.martin.finalclinicaodontologica.service.interf.IOdontologoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

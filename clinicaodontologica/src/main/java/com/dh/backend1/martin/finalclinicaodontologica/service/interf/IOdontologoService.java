@@ -1,4 +1,4 @@
-package com.dh.backend1.martin.finalclinicaodontologica.service;
+package com.dh.backend1.martin.finalclinicaodontologica.service.interf;
 
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.OdontologoDto;
 

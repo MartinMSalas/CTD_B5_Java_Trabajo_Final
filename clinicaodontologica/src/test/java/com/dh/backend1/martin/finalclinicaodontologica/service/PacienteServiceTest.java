@@ -2,6 +2,7 @@ package com.dh.backend1.martin.finalclinicaodontologica.service;
 
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.DomicilioDto;
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
+import com.dh.backend1.martin.finalclinicaodontologica.service.interf.IPacienteService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
