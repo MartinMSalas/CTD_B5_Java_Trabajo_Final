@@ -1,6 +1,7 @@
 package com.dh.backend1.martin.finalclinicaodontologica.controller;
 
 
+import com.dh.backend1.martin.finalclinicaodontologica.exceptions.PacienteSinDomicilioException;
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
 import com.dh.backend1.martin.finalclinicaodontologica.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,13 @@ public class PacienteController {
         this.pacienteService = pacienteService;
     }
     @PostMapping("/crear")
-    public ResponseEntity<?> crearPaciente(@RequestBody PacienteDto pacienteDto) {
+    public ResponseEntity<?> crearPaciente(@RequestBody PacienteDto pacienteDto)  throws Exception {
 
         if( pacienteDto.getApellido() == null || pacienteDto.getDni() == null)
             return ResponseEntity.badRequest().build();
+        if (pacienteDto.getDomicilio() == null)
+            throw new PacienteSinDomicilioException("El domicilio del paciente no puede ser nulo");
+
         if( pacienteDto.getFechaAlta() == null){
             pacienteDto.setFechaAlta(LocalDate.now());
         }

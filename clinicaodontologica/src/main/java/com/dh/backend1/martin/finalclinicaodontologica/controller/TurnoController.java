@@ -1,5 +1,7 @@
 package com.dh.backend1.martin.finalclinicaodontologica.controller;
 
+import com.dh.backend1.martin.finalclinicaodontologica.exceptions.TurnoConFechaPasadaException;
+import com.dh.backend1.martin.finalclinicaodontologica.exceptions.TurnoConIdException;
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.PacienteDto;
 import com.dh.backend1.martin.finalclinicaodontologica.modeldto.TurnoDto;
 import com.dh.backend1.martin.finalclinicaodontologica.service.TurnoService;
@@ -23,13 +25,18 @@ public class TurnoController {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<TurnoDto> crearTurno(@RequestBody TurnoDto turnoDto) {
+    public ResponseEntity<TurnoDto> crearTurno(@RequestBody TurnoDto turnoDto) throws Exception {
 
         if( turnoDto.getOdontologo() == null || turnoDto.getPaciente() == null)
             return ResponseEntity.badRequest().build();
+        if (turnoDto.getId()!= null)
+            throw new TurnoConIdException("El id del turno debe ser nulo");
         if( turnoDto.getFecha() == null){
             turnoDto.setFecha(LocalDateTime.now());
+        } else if (turnoDto.getFecha().isBefore(LocalDateTime.now())) {
+            throw new TurnoConFechaPasadaException("La fecha del turno no puede ser anterior a la fecha actual");
         }
+
         if (turnoDto.getPaciente().getFechaAlta() == null){
             turnoDto.getPaciente().setFechaAlta(LocalDate.now());
         }
