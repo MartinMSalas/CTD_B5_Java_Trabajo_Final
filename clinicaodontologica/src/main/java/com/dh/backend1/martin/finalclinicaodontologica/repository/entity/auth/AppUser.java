@@ -1,11 +1,12 @@
 package com.dh.backend1.martin.finalclinicaodontologica.repository.entity.auth;
 
-import jakarta.persistence.*;
+
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -13,7 +14,7 @@ import java.util.Collections;
 @NoArgsConstructor
 public class AppUser implements UserDetails {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String username;

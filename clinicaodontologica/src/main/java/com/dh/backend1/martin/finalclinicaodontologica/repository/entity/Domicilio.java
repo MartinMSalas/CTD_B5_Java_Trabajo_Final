@@ -1,7 +1,8 @@
 package com.dh.backend1.martin.finalclinicaodontologica.repository.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="Domicilios")
